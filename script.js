@@ -4,8 +4,6 @@ const img_url = document.querySelector("#uploaded-img");
 const top_text = document.querySelector("#text-top");
 const bottom_text = document.querySelector("#text-bottom");
 
-let index = 0; //to select each image if needed
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let li = document.createElement("li");
@@ -23,7 +21,6 @@ form.addEventListener("submit", (e) => {
   gallery.appendChild(li);
   document.querySelectorAll(".red-cross").forEach((elm) => {
     elm.addEventListener("click", () => {
-      console.log(document.querySelector(".red-cross").parentNode);
       elm.parentNode.remove();
     });
   });

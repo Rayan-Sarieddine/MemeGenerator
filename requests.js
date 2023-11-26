@@ -1,4 +1,5 @@
 let memes;
+let index = 0;
 const notice = document.querySelector(".notice");
 async function fetchData() {
   try {
@@ -8,17 +9,14 @@ async function fetchData() {
     }
     const data = await response.json();
     memes = data.data;
-    // Any further processing using 'memes' can be done here
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
 
-let i = 0;
 const generate = document.querySelector(".btn-auto");
 generate.addEventListener("click", async () => {
   await fetchData();
-  console.log(memes.memes[0].url);
   let li = document.createElement("li");
   li.classList.add("meme-img");
   li.innerHTML = `
@@ -28,15 +26,15 @@ generate.addEventListener("click", async () => {
   </div>
   <div class="red-cross">X</div>
   `;
-  gallery.appendChild(li);
   index++;
+  gallery.appendChild(li);
   document.querySelectorAll(".red-cross").forEach((elm) => {
     elm.addEventListener("click", () => {
       let img_link = elm.parentNode.querySelector("img").getAttribute("src");
       navigator.clipboard.writeText(img_link);
       setTimeout(() => {
         notice.classList.toggle("hidden");
-      }, 1000);
+      }, 1500);
       notice.classList.toggle("hidden");
       elm.parentNode.remove();
     });

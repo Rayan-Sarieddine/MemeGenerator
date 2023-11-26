@@ -137,6 +137,11 @@ footer {
   margin-top: 1rem;
   background-color: #246b6f;
 }
+
+.notice {
+  color: red;
+  display: block;
+}
 .hidden {
   display: none;
 }
